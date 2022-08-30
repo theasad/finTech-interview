@@ -45,7 +45,7 @@ def generate_coordinates(start_node, end_node):
     """
     Generate coordinates for from start node A to end node E
     """
-    initial_path = start_node+'-'+end_node
+    initial_path = f'{start_node}-{end_node}'
     distance = 0
     toll = 0
     _next_start_node = None
@@ -56,11 +56,10 @@ def generate_coordinates(start_node, end_node):
             for path, value in graph_data.items():
                 if not path.startswith(start_node):
                     continue
-                else:
-                    _next_start_node = path.split('-')[1]
-                    print(_next_start_node)
+                _next_start_node = path.split('-')[1]
+                print(_next_start_node)
 
-                _t = _next_start_node + '-'+node
+                _t = f'{_next_start_node}-{node}'
                 distance, toll = graph_data.get(_t, (0, 0))
                 print(_t, distance, toll)
                 if _next_start_node == end_node:
